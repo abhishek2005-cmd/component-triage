@@ -1,4 +1,4 @@
-# Component Request Triage
+# Component Triage
 
 A small take-home app for turning free-text electronics component requests into catalog-backed reply drafts for human review. The catalog data in `data/parts.json` is fictional.
 
@@ -34,6 +34,31 @@ docker compose up --build
 Open the UI at `http://localhost:5173`. The API is at `http://localhost:3000`; the analysis service is at `http://localhost:8000`.
 
 Compose waits for MongoDB, runs the one-shot `catalog-seed` service, then starts analysis and API. The seed script replaces the catalog records in the persistent `mongo_data` volume on a clean startup. Do not remove that volume if you need to keep existing data.
+
+To share a temporary public preview, install [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/) and run:
+
+```sh
+cloudflared tunnel --url http://localhost:5173 --http-host-header localhost:5173
+```
+
+Open the `trycloudflare.com` URL printed by the command while the app and tunnel remain running. This temporary preview is public and the app has no sign-in; do not enter sensitive information.
+
+## Oracle Cloud deployment
+
+For a persistent public URL without a paid application-hosting plan, you can run the app on an Oracle Cloud Always Free VM (subject to account, region, and capacity availability). The VM must remain online, and cloud providers may ask for a payment method to verify an account. Keep resources within the Always Free limits and monitor billing. The application has no sign-in, so anyone with the URL can view and modify requests.
+
+1. Create an Ubuntu VM with enough Always Free compute and memory for Docker and the analysis model. Reserve/assign a public IP.
+2. Register a domain and create a DNS `A` record for the app hostname pointing to that public IP.
+3. In the cloud firewall/security list and Ubuntu firewall, allow inbound TCP `22` only from your IP and TCP `80`/`443` for the website.
+4. Install Docker Engine and Docker Compose plugin v2.24 or newer on the VM, then clone this repository there. Grant the VM read-only access to this private GitHub repository; never put access tokens in the Compose files.
+5. From the repository directory, create a `.env` file from `.env.example` and set `APP_DOMAIN` to the DNS hostname. Keep the other defaults for the Compose network.
+6. Start the production stack:
+
+   ```sh
+   docker compose -f docker-compose.yml -f docker-compose.production.yml up --build -d
+   ```
+
+Caddy obtains and renews the HTTPS certificate automatically. MongoDB, API, and analysis ports are private to the Compose network; only ports 80 and 443 are published. Persist the Docker volumes and do not use `docker compose down -v` if you need to keep request data. The hostname and stable public IP must be ready before starting the stack.
 
 ## Tests
 

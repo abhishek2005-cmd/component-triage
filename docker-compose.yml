@@ -99,7 +99,8 @@ services:
     ports:
       - "${FRONTEND_PORT:-5173}:5173"
     environment:
-      VITE_API_URL: ${VITE_API_URL:-http://localhost:3000}
+      VITE_API_URL: ${VITE_API_URL:-}
+      VITE_API_PROXY_TARGET: http://api:3000
     depends_on:
       api:
         condition: service_healthy

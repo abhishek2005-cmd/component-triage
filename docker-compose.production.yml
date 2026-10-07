@@ -1,0 +1,44 @@
+services:
+  mongodb:
+    ports: !reset []
+
+  analysis:
+    ports: !reset []
+    volumes:
+      - embedding_cache:/root/.cache/huggingface
+
+  api:
+    ports: !reset []
+    environment:
+      FRONTEND_ORIGIN: https://${APP_DOMAIN:?Set APP_DOMAIN to the public domain}
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.production
+    ports: !reset []
+    environment: []
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?Set APP_DOMAIN to the public domain}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      api:
+        condition: service_healthy
+      frontend:
+        condition: service_started
+
+volumes:
+  embedding_cache:
+  caddy_data:
+  caddy_config:
