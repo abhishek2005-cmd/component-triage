@@ -1,0 +1,82 @@
+[
+  {
+    "request": "Please quote 40 precision 10 kOhm thin-film resistors with 0.1 percent tolerance for a low-drift voltage divider.",
+    "expectedPartNumber": "SYN-RES-001"
+  },
+  {
+    "request": "I need low-value 0.1 ohm shunt resistors, at least half-watt rated, to measure current in a battery-powered motor controller.",
+    "expectedPartNumber": "SYN-RES-003"
+  },
+  {
+    "request": "Looking for 100 nF X7R multilayer ceramic capacitors rated 50 V for local bypass and decoupling beside digital IC power pins.",
+    "expectedPartNumber": "SYN-CAP-001"
+  },
+  {
+    "request": "Can you supply stable 22 pF C0G or NP0 capacitors for the load network on a quartz crystal oscillator?",
+    "expectedPartNumber": "SYN-CAP-003"
+  },
+  {
+    "request": "Need a shielded 1 uH power inductor with at least 2 A saturation current for a compact high-frequency buck power supply.",
+    "expectedPartNumber": "SYN-IND-001"
+  },
+  {
+    "request": "Please find a low-profile 2.2 microhenry shielded inductor that can handle about 5 A on a processor power rail.",
+    "expectedPartNumber": "SYN-IND-006"
+  },
+  {
+    "request": "I need bright green surface-mount status LEDs near 525 nm for a panel that indicates power and ready state.",
+    "expectedPartNumber": "SYN-LED-002"
+  },
+  {
+    "request": "Looking for 940 nm infrared emitter diodes for a remote-control transmitter and optical receiver test fixture.",
+    "expectedPartNumber": "SYN-LED-006"
+  },
+  {
+    "request": "Need a low-forward-voltage Schottky rectifier, 1 amp and 40 volts, for freewheeling and reverse-polarity protection.",
+    "expectedPartNumber": "SYN-DIO-001"
+  },
+  {
+    "request": "Can I get a unidirectional 24 V TVS transient suppressor diode for clamping short surge events on a DC input line?",
+    "expectedPartNumber": "SYN-DIO-004"
+  },
+  {
+    "request": "Please quote logic-level N-channel MOSFETs with a 30 V drain rating for switching a small load directly from 3.3 V GPIO.",
+    "expectedPartNumber": "SYN-MOS-001"
+  },
+  {
+    "request": "I need a P-channel FET for high-side battery load switching, around 20 V rating and a few amps of current capability.",
+    "expectedPartNumber": "SYN-MOS-003"
+  },
+  {
+    "request": "Looking for a low-noise 3.0 V LDO linear regulator rated around 150 mA for an RF module and precision sensor rail.",
+    "expectedPartNumber": "SYN-REG-005"
+  },
+  {
+    "request": "Need a 3.3 volt low-dropout voltage regulator, about 300 mA, for a microcontroller board powered from a 5 V input.",
+    "expectedPartNumber": "SYN-REG-001"
+  },
+  {
+    "request": "Please recommend a synchronous step-down buck converter that accepts 12 V input and provides 3.3 V at up to 2 A.",
+    "expectedPartNumber": "SYN-BUCK-001"
+  },
+  {
+    "request": "I need a compact synchronous buck regulator operating from a single-cell input around 3.7 V, with an adjustable low-voltage output for a processor.",
+    "expectedPartNumber": "SYN-BUCK-003"
+  },
+  {
+    "request": "Can you supply an I2C digital temperature sensor with roughly -40 to 125 C range and half-degree accuracy for thermal monitoring?",
+    "expectedPartNumber": "SYN-SNS-001"
+  },
+  {
+    "request": "Looking for a combined relative humidity and temperature sensor with an I2C interface for an indoor climate logger.",
+    "expectedPartNumber": "SYN-SNS-005"
+  },
+  {
+    "request": "Need a reversible USB Type-C receptacle for a board, USB 2.0 data, 16 contacts, surface-mount mid-mount style.",
+    "expectedPartNumber": "SYN-CON-002"
+  },
+  {
+    "request": "Please quote a complete weatherproof plastic enclosure kit for a small control box, including gasket, latch, mounting ears, and screws; I do not need individual electronic components.",
+    "expectedPartNumber": null
+  }
+]
